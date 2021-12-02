@@ -37,6 +37,10 @@ body {
     justify-content: space-around;
 }
 
+/*
+    Header specify fieldset header style
+*/
+
 .header {
     position: relative;
     color: darkblue;
@@ -44,15 +48,25 @@ body {
     font-size: 30px;
 }
 
+/* 
+    form card width
+*/
 .card {
     width: 40%;
 }
+
+/*
+    fieldset styles
+*/
 
 .fieldset {
     padding: 10px;
     border-radius: 10px;
 }
 
+/*
+    All Buttons unic style
+*/
 .button {
     width: 120px;
     height: 25px;
@@ -62,6 +76,10 @@ body {
     color: white;
     border-radius: 10px;
 }
+
+/*
+    saved Answer section style
+*/
 
 .saved_card {
     display: none;

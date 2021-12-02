@@ -1,21 +1,18 @@
 const nameInput = document.querySelector('#name');
-
 const submitButton = document.querySelector('.submit');
 const saveButton = document.querySelector('.save');
 const clearButton = document.querySelector('.clear');
-
 const predictionGender = document.querySelector('.prediction_gender');
 const predictionPercent = document.querySelector('.prediction_percent');
-
 const savedAnswerCard = document.querySelector('.saved_card');
 const savedAnswerContent = document.querySelector('.saved_answer_content');
-
 const maleRB = document.getElementById('male');
 const femaleRB = document.getElementById('female');
+const actionResult = document.querySelector('.action_result');
 
 
 
-
+// send request to server and get data for input name then call functions to show result
 async function getGender(e) {
     let name = nameInput.value;
     e.preventDefault();
@@ -39,6 +36,7 @@ async function getGender(e) {
     }
 }
 
+// show Prediction result to user
 function setPrediction(obj) {
     if (obj.gender == "male") {
         var icon = '<span><i class="fas fa-male"></i><span>';
@@ -49,6 +47,7 @@ function setPrediction(obj) {
     predictionPercent.innerHTML = '<span><i class="fas fa-percent" style="font-size:10px" ></i>  ' + (obj.probability*100) + '</span>';
 }
 
+// show SavedAnswer to user
 function setSavedAnswer(obj) {
     if (obj.gender == "male") {
         var icon = '<span><i class="fas fa-male"></i><span>';
@@ -59,6 +58,7 @@ function setSavedAnswer(obj) {
 
 }
 
+// save prediction result or user idea in local storage
 async function savePrediction(e) {
     let name = nameInput.value;
 
@@ -83,12 +83,23 @@ async function savePrediction(e) {
         window.localStorage.setItem(name, JSON.stringify(obj));
     }
 
+    // actionResult.style.display = "block";
+    // actionResult.innerHTML = "<span>Saved!</span>"
+    // setTimeout(() => { // removes the error message from screen after 4 seconds.
+    //     actionResult.style.display = "none";
+    // }, 4000);
 }
 
+// remove saved answer
 function removeSavedAnswer(e){
     let name = nameInput.value;
     e.preventDefault();
     window.localStorage.removeItem(name);
+    actionResult.style.display = "block";
+    // actionResult.innerHTML = "<span>Removed!</span>"
+    // setTimeout(() => { // removes the error message from screen after 4 seconds.
+    //     actionResult.style.display = "none";
+    // }, 4000);
 }
 
 submitButton.addEventListener('click', getGender);
