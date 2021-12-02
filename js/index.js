@@ -30,7 +30,7 @@ async function getGender(e) {
         console.log(data);
         if (data != null) {
             savedAnswerCard.style.display = "block";
-            setSavedAnswer(obj);
+            setSavedAnswer(data);
         } else {
             savedAnswerCard.style.display = "none";
         }
@@ -46,7 +46,7 @@ function setPrediction(obj) {
         var icon = '<span><i class="fas fa-female"></i><span>';
     }
     predictionGender.innerHTML = "<span>" + icon + "  " + obj.gender + "</span>";
-    predictionPercent.innerHTML = '<span><i class="fas fa-percent" style="font-size:10px" ></i>  ' + obj.probability + '</span>';
+    predictionPercent.innerHTML = '<span><i class="fas fa-percent" style="font-size:10px" ></i>  ' + (obj.probability*100) + '</span>';
 }
 
 function setSavedAnswer(obj) {
@@ -55,14 +55,17 @@ function setSavedAnswer(obj) {
     } else if (obj.gender == "female") {
         var icon = '<span><i class="fas fa-female"></i><span>';
     }
-    savedAnswerContent.innerHTML = "<span>" + icon + "  " + obj.gender + "</span><br>" + '<span><i class="fas fa-percent" style="font-size:10px" ></i>  ' + obj.probability + '</span>';
+    savedAnswerContent.innerHTML = "<span>" + icon + "  " + obj.gender + "</span><br>" + '<span><i class="fas fa-percent" style="font-size:10px" ></i>  ' + (obj.probability*100) + '</span>';
 
 }
 
 async function savePrediction(e) {
     let name = nameInput.value;
-    let maleChecked = maleRB.Checked;
-    let femaleChecked = femaleRB.Checked;
+
+    let maleChecked = maleRB.checked;
+    console.log(maleChecked);
+    let femaleChecked = femaleRB.checked;
+    console.log(femaleChecked);
     e.preventDefault();
     if(maleChecked || femaleChecked){
         const userObj = {
