@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mr. or Ms.?</title>
+    <script src="https://kit.fontawesome.com/a81368914c.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="icon" type="image/png" href="./images/question.png" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="form_card card">
+            <form class="form_card_content">
+                <fieldset class="fieldset">
+                    <legend class="header">Mr. or Ms.?</legend>
+                    <label for="name">Name</label>
+                    <input type="text" id="name" maxlength="255" pattern="[A-Za-z ]+" required>
+                    <br><br>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">Male</label><br>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">Female</label><br>
+                    <br>
+                    <button class="submit button">submit</button><br>
+                    <button class="save button">save</button>
+                </fieldset>
+            </form>
+        </div>
+        <div class="result_card card">
+            <div class="prediction_card">
+                <fieldset class="fieldset">
+                    <legend class="header">Prediction</legend>
+                    <div class="prediction_gender"></div>
+                    <div class="prediction_percent"></div>
+                </fieldset>
+            </div>
+            <div class="saved_card">
+                <fieldset class="fieldset">
+                    <legend class="header">Saved Answer</legend>
+                    <div class="saved_answer_content">
+                    </div><br>
+                    <button class="clear button">clear</button>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <script src="./js/index.js"></script>
+</body>
+
+</html>
