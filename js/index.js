@@ -99,6 +99,7 @@ function removeSavedAnswer(e) {
     e.preventDefault();
     window.localStorage.removeItem(name);
     showAlert("Removed!");
+    savedAnswerCard.style.display = "none";
 }
 
 // this function check input name validity
@@ -107,8 +108,9 @@ function checkValidity(name) {
     const regex2 = /[0-9\.\-\/]+/g;
     const foundValid = name.match(regex1);
     const foundNotValid = name.match(regex2);
-
-    if (foundNotValid.length == 0 || foundValid.length > 0) {
+    console.log(foundValid);
+    console.log(foundNotValid);
+    if (foundNotValid == null && foundValid.length > 0) {
         return true;
     }
     return false;
