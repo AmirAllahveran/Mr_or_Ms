@@ -85,3 +85,18 @@ body {
     display: none;
 }
   
+
+/*
+    Error section 
+*/
+.action_result {
+    display: none;
+}
+
+/*
+    In the moment name input detection
+*/
+
+input:invalid {
+    border-color: red;
+}
