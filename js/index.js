@@ -42,18 +42,19 @@ async function getGender(e) {
 
 // show Prediction result to user
 function setPrediction(obj) {
-    if(obj.gender == null){
-        predictionGender.innerHTML = '<span><i class="fas fa-exclamation-square"></i></span>';
+    if (obj.gender == null) {
+        predictionGender.innerHTML = '<span><i class="fas fa-ban"></i></span>';
         predictionPercent.innerHTML = '<span><i class="fas fa-question"></i></span>';
         showAlert("Can't Find!");
+    } else {
+        if (obj.gender == "male") {
+            var icon = '<span><i class="fas fa-male"></i><span>';
+        } else if (obj.gender == "female") {
+            var icon = '<span><i class="fas fa-female"></i><span>';
+        }
+        predictionGender.innerHTML = "<span>" + icon + "  " + obj.gender + "</span>";
+        predictionPercent.innerHTML = '<span><i class="fas fa-percent" style="font-size:10px" ></i>  ' + (obj.probability * 100) + '</span>';
     }
-    if (obj.gender == "male") {
-        var icon = '<span><i class="fas fa-male"></i><span>';
-    } else if (obj.gender == "female") {
-        var icon = '<span><i class="fas fa-female"></i><span>';
-    }
-    predictionGender.innerHTML = "<span>" + icon + "  " + obj.gender + "</span>";
-    predictionPercent.innerHTML = '<span><i class="fas fa-percent" style="font-size:10px" ></i>  ' + (obj.probability * 100) + '</span>';
 }
 
 // show SavedAnswer to user
