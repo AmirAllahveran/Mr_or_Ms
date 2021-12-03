@@ -42,6 +42,11 @@ async function getGender(e) {
 
 // show Prediction result to user
 function setPrediction(obj) {
+    if(obj.gender == null){
+        predictionGender.innerHTML = '<span><i class="fas fa-exclamation-square"></i></span>';
+        predictionPercent.innerHTML = '<span><i class="fas fa-question"></i></span>';
+        showAlert("Can't Find!");
+    }
     if (obj.gender == "male") {
         var icon = '<span><i class="fas fa-male"></i><span>';
     } else if (obj.gender == "female") {
@@ -78,12 +83,10 @@ async function savePrediction(e) {
                 probability: 1,
                 count: 1
             };
-            console.log(userObj);
             window.localStorage.setItem(name, JSON.stringify(userObj));
         } else {
             let response = await fetch(`https://api.genderize.io/?name=${name}`);
             let obj = await response.json();
-            console.log(obj);
             window.localStorage.setItem(name, JSON.stringify(obj));
         }
 
@@ -108,8 +111,6 @@ function checkValidity(name) {
     const regex2 = /[0-9\.\-\/]+/g;
     const foundValid = name.match(regex1);
     const foundNotValid = name.match(regex2);
-    console.log(foundValid);
-    console.log(foundNotValid);
     if (foundNotValid == null && foundValid.length > 0) {
         return true;
     }
